@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Collapse, Button, CardBody, Card, Input } from 'reactstrap';
 import _ from 'lodash';
+import { TodosContext } from './context/Todos';
 
-export default function Inputform({ todos, setTodos }) {
+export default function Inputform() {
     const data = { id: Math.floor(Math.random() * 1001), title: '', desc: '', createdAt: null, status: 0 }
     const [state, setState] = useState(data);
+    const {todos, setTodos} = useContext(TodosContext);
     const handleChange = e => {
         const { name, value } = e.target;
         setState(prevState => ({
